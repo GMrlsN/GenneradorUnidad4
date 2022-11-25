@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\gabri\\OneDrive\\Documents\\ITQ\\Materias\\Lenguajes y Automatas II\\Generador\\Generador.csproj",
+      "projectUniqueName": "C:\\Users\\gabri\\OneDrive\\Documents\\ITQ\\Materias\\Lenguajes y Automatas II\\GenneradorUnidad4\\Generador.csproj",
       "projectName": "Generador",
-      "projectPath": "C:\\Users\\gabri\\OneDrive\\Documents\\ITQ\\Materias\\Lenguajes y Automatas II\\Generador\\Generador.csproj",
+      "projectPath": "C:\\Users\\gabri\\OneDrive\\Documents\\ITQ\\Materias\\Lenguajes y Automatas II\\GenneradorUnidad4\\Generador.csproj",
       "packagesPath": "C:\\Users\\gabri\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\gabri\\OneDrive\\Documents\\ITQ\\Materias\\Lenguajes y Automatas II\\Generador\\obj\\",
+      "outputPath": "C:\\Users\\gabri\\OneDrive\\Documents\\ITQ\\Materias\\Lenguajes y Automatas II\\GenneradorUnidad4\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\gabri\\AppData\\Roaming\\NuGet\\NuGet.Config",

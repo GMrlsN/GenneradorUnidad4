@@ -41,8 +41,8 @@ namespace Generador
         }
         private bool esSNT(string contenido)
         {
-            return true;
-            //return listaSNT.Contains(contenido);
+            //return true;
+            return listaSNT.Contains(contenido);
         }
         private void agregarSNT(string contenido)
         {
@@ -83,12 +83,24 @@ namespace Generador
             }
             lenguaje.WriteLine(contenido);
         }
+        private void leerLista()
+        {
+            //string nombre = archivo.            
+            //Requerimiento 5
+            string linea = "";
+            string? v = (linea = archivo.ReadLine());
+            while (v != null)
+            {
+                string[] partes = linea.Split(' ');
+                agregarSNT(partes[1]);
+                Console.WriteLine(partes[1]);
+            }
+            //archivo.Close();
+            //archivo = new System.IO.StreamReader(nombre);
+            archivo.BaseStream.Seek(0, System.IO.SeekOrigin.Begin);
+        }
         private void Programa( string produccionPrincipal)
         {   
-            agregarSNT("Programa");
-            agregarSNT("Librerias");
-            agregarSNT("Variables");
-            agregarSNT("ListaIdentificadores");
             WriteLineTP("using System;");
             WriteLineTP("using System.IO;");
             WriteLineTP("using System.Collections.Generic;");
@@ -116,6 +128,7 @@ namespace Generador
         }
         public void gramatica()
         {
+            leerLista();
             cabecera();
             Programa(primeraProduccion);
             cabeceraLenguaje();
