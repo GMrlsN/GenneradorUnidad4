@@ -6,11 +6,11 @@ using System.Collections.Generic;
 //Requerimiento 2.-Declarar un atributo "primeraProduccion" de tipo string y actualizarlo con la       --Ya jala
 //                 primera produccion de la gramatica
 //Requerimiento 3.-La primera produccion es publica y el resto es privada                              --Ya jala
-//Requerimiento 4.-El costructor lexico parametrizado debe validar que la extension del archivo        
+//Requerimiento 4.-El costructor lexico parametrizado debe validar que la extension del archivo        --Ya jala
 //                 a compilar sea .gen 
 //                 si no es .gen debe lanzar una excepcion
 //Requerimiento 5.-Resolver la ambiguedad de ST y SNT
-//                 Recorrer linea por linea el archivo gram para extraer cada nombre de produccion
+//                 Recorrer linea por linea el archivo gram para extraer cada nombre de produccion     
 //Requerimiento 6.-Agregar el parentesis izquierdo y el parentesis derecho escapados en la matriz
 //                 de transiciones
 //Requerimiento 7.-Implementar el Or y la cerradura epsilon (No va a haber ORs)
