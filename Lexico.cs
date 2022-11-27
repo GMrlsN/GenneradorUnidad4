@@ -16,12 +16,15 @@ namespace Generador
         protected int linea, posicion = 0;
         int[,] TRAND = new int[,]
         {
-            {0,1,5,3,4,5},
-            {F,F,2,F,F,F},
-            {F,F,F,F,F,F},
-            {F,F,F,3,F,F},
-            {F,F,F,F,F,F},
-            {F,F,F,F,F,F},
+            {0,1,8,3,4,5,8,8,8},
+            {F,F,2,F,F,F,F,F,F},
+            {F,F,F,F,F,F,F,F,F},
+            {F,F,F,3,F,F,F,F,F},
+            {F,F,F,F,F,F,F,F,F},
+            {F,F,F,F,F,F,6,7,F},
+            {F,F,F,F,F,F,F,F,F},
+            {F,F,F,F,F,F,F,F,F},
+            {F,F,F,F,F,F,F,F,F},
         };
         public Lexico()
         {
@@ -97,6 +100,15 @@ namespace Generador
                     setClasificacion(Tipos.FinProduccion);
                     break;
                 case 5:
+                    setClasificacion(Tipos.Escape);
+                    break;
+                case 6:
+                    setClasificacion(Tipos.PIzquierdo);
+                    break;
+                case 7:
+                    setClasificacion(Tipos.PDerecho);
+                    break;
+                case 8:
                     setClasificacion(Tipos.ST);
                     break;
             }
@@ -123,7 +135,19 @@ namespace Generador
             {
                 return 3;
             }
-            return 5;
+            else if(c == '\\')
+            {
+                return 5;
+            }
+            else if(c == '(')
+            {
+                return 6;
+            }
+            else if(c == ')')
+            {
+                return 7;
+            }
+            return 8;
         }
         public void NextToken()
         {
@@ -135,6 +159,9 @@ namespace Generador
             {
                 c = (char)archivo.Peek(); //Funcion de transicion
                 estado = TRAND[estado, columna(c)];
+                //Console.WriteLine("c = " + c);
+                //Console.WriteLine("estado = " + estado);
+                
                 clasifica(estado);
                 if (estado >= 0)
                 {

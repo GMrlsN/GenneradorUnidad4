@@ -10,7 +10,7 @@ namespace Generador
 
         public enum Tipos
         {
-            Produce, SNT, ST, FinProduccion, PIzquierdo, PDerecho, Or, Epsilon
+            Produce, SNT, ST, FinProduccion, PIzquierdo, PDerecho, Or, Escape
         }
 
         public void setContenido(string contenido)

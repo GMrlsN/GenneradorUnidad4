@@ -11,7 +11,7 @@ using System.Collections.Generic;
 //                 si no es .gen debe lanzar una excepcion
 //Requerimiento 5.-Resolver la ambiguedad de ST y SNT                                                  --Ya jala
 //                 Recorrer linea por linea el archivo gram para extraer cada nombre de produccion     
-//Requerimiento 6.-Agregar el parentesis izquierdo y el parentesis derecho escapados en la matriz
+//Requerimiento 6.-Agregar el parentesis izquierdo y el parentesis derecho escapados en la matriz      --Ya jala?
 //                 de transiciones
 //Requerimiento 7.-Implementar el Or y la cerradura epsilon (No va a haber ORs)
 //                 
@@ -194,13 +194,13 @@ namespace Generador
         }
         private void simbolos()
         {
-            if(getContenido() == "(")
+            if(getContenido() == "\\(")
             {
-                match("(");
+                match("\\(");
                 WriteLineTL("if()");
                 WriteLineTL("{");
                 simbolos();
-                match(")");
+                match("\\)");
                 WriteLineTL("}");
             }
             else if(esTipo(getContenido()))
@@ -218,7 +218,7 @@ namespace Generador
                 WriteLineTL("match(\"" + getContenido() + "\");");
                 match(Tipos.ST);
             }
-            if(getClasificacion() != Tipos.FinProduccion && getContenido() != ")")
+            if(getClasificacion() != Tipos.FinProduccion && getContenido() != "\\)")
             {
                 simbolos();
             }
@@ -246,7 +246,6 @@ namespace Generador
                 case "Ciclo":
                 case "Condicion":
                 return true;
-
             }
             return false;
         }

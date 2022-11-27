@@ -8,7 +8,7 @@ namespace Generador
     {
         public Error(string mensaje, StreamWriter log) : base(mensaje)
         {
-            //Console.WriteLine(mensaje);
+            Console.WriteLine(mensaje);
             log.WriteLine(mensaje);
         }
     }
