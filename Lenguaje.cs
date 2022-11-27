@@ -9,7 +9,7 @@ using System.Collections.Generic;
 //Requerimiento 4.-El costructor lexico parametrizado debe validar que la extension del archivo        --Ya jala
 //                 a compilar sea .gen 
 //                 si no es .gen debe lanzar una excepcion
-//Requerimiento 5.-Resolver la ambiguedad de ST y SNT
+//Requerimiento 5.-Resolver la ambiguedad de ST y SNT                                                  --Ya jala
 //                 Recorrer linea por linea el archivo gram para extraer cada nombre de produccion     
 //Requerimiento 6.-Agregar el parentesis izquierdo y el parentesis derecho escapados en la matriz
 //                 de transiciones
@@ -88,16 +88,23 @@ namespace Generador
             //string nombre = archivo.            
             //Requerimiento 5
             string linea = "";
-            string? v = (linea = archivo.ReadLine());
-            while (v != null)
+            linea = archivoR.ReadLine();
+            linea = archivoR.ReadLine();
+            //Console.WriteLine(linea);
+            while (linea != null)
             {
-                string[] partes = linea.Split(' ');
-                agregarSNT(partes[1]);
-                Console.WriteLine(partes[1]);
+                //Console.WriteLine(linea);
+                string[] partes = linea.Split('-');
+                partes[0] = partes[0].Trim(' ');
+                agregarSNT(partes[0]);
+                //Console.WriteLine(partes[0]);
+                linea = archivoR.ReadLine();
             }
-            //archivo.Close();
-            //archivo = new System.IO.StreamReader(nombre);
-            archivo.BaseStream.Seek(0, System.IO.SeekOrigin.Begin);
+            //archivoR.Close();
+            //archivo = new System.IO.StreamReader("c2.gram");
+            //archivo.DiscardBufferedData(); 
+            //archivo.BaseStream.Position = 0;
+            //archivo.BaseStream.Seek(0, System.IO.SeekOrigin.Begin);
         }
         private void Programa( string produccionPrincipal)
         {   
@@ -203,7 +210,7 @@ namespace Generador
             }
             else if(esSNT(getContenido()))
             {
-                WriteLineTL("match(\"" + getContenido() + "\");");
+                WriteLineTL(getContenido() + "();");
                 match(Tipos.ST);
             }
             else if(getClasificacion() == Tipos.ST)

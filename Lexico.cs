@@ -6,6 +6,7 @@ namespace Generador
      public class Lexico : Token
     {
         protected StreamReader archivo;
+        protected StreamReader archivoR;
         protected StreamWriter log;
         protected StreamWriter lenguaje;
         protected StreamWriter programa;
@@ -39,6 +40,7 @@ namespace Generador
             if (existencia == true)
             {
                 archivo = new StreamReader(path);
+                archivoR = new StreamReader(path);
             }
             else
             {
@@ -62,6 +64,8 @@ namespace Generador
             if (File.Exists(nombre))
             {
                 archivo = new StreamReader(nombre);
+                archivoR = new StreamReader(nombre);
+
             }
             else
             {

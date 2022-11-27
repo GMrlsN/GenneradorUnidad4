@@ -17,6 +17,7 @@ namespace Generador
 
         public void match(String espera)
         {
+            //Console.WriteLine(espera + " = "+getContenido());
             if (espera == getContenido())
             {
                 NextToken();
@@ -29,7 +30,7 @@ namespace Generador
         }
 
         public void match(Tipos espera)
-        {
+        {   //Console.WriteLine(espera + " = "+getContenido());
             if (espera == getClasificacion())
             {
                 NextToken();

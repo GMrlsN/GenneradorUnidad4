@@ -1,4 +1,4 @@
-Gramatica: cplusplus
+Gramatica: cpp
     Programa  -> #Identificador, Numero Librerias
     Librerias -> #include<Identificador.h>
     Variables -> (Identificador)
