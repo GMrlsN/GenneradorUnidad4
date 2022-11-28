@@ -197,7 +197,14 @@ namespace Generador
             if(getContenido() == "\\(")
             {
                 match("\\(");
-                WriteLineTL("if()");
+                if(esTipo(getContenido()))
+                {
+                    WriteLineTL("if( getClasificacion() == Tipos."+getContenido() + ")");
+                }
+                else 
+                {
+                    WriteLineTL("if( getContenido() == \""+getContenido()+"\"" + ")");
+                }
                 WriteLineTL("{");
                 simbolos();
                 match("\\)");
