@@ -1,4 +1,5 @@
-﻿using System;
+﻿//Gabriel Morales Nuñez
+using System;
 
 namespace Generador
 {
