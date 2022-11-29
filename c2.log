@@ -1,5 +1,5 @@
 Archivo: c2.gram
-11/28/2022 9:59:22 AM
+11/29/2022 9:53:03 AM
 Gramatica ST
 : ST
 cplusplus ST
@@ -71,14 +71,4 @@ ListaInstrucciones ST
 -> Produce
 Instruccion ST
 \( PIzquierdo
-; ST
-ListaInstrucciones ST
-\) PDerecho
-
- FinProduccion
-Instruccion ST
--> Produce
-Printf ST
-( ST
-Scanf ST
-) ST
+Variables ST

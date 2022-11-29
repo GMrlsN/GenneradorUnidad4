@@ -21,17 +21,15 @@ namespace Generador
     {
         int tabulador;
         string primeraProduccion = "";
-        bool primeraVez;
-        List <string> listaSNT;
+        bool primeraVez,ejemplo = true, error = false;
+        List <string> listaSNT = new List<string>();
         public Lenguaje(string nombre) : base(nombre)
         {
-            listaSNT = new List<string>();
             tabulador = 0;
             primeraVez = true;
         }
         public Lenguaje()
         {
-            listaSNT = new List<string>();
             tabulador = 0;
             primeraVez = true;
         }
@@ -100,11 +98,12 @@ namespace Generador
                 //Console.WriteLine(partes[0]);
                 linea = archivoR.ReadLine();
             }
-            //archivoR.Close();
-            //archivo = new System.IO.StreamReader("c2.gram");
-            //archivo.DiscardBufferedData(); 
+            archivoR.Close();
+            //archivo.DiscardBufferedData();
+            //archivo.BaseStream.Seek(0, SeekOrigin.Begin);
+            //NextToken();
             //archivo.BaseStream.Position = 0;
-            //archivo.BaseStream.Seek(0, System.IO.SeekOrigin.Begin);
+            //archivo.DiscardBufferedData();
         }
         private void Programa( string produccionPrincipal)
         {   
@@ -200,9 +199,11 @@ namespace Generador
                 if(esTipo(getContenido()))
                 {
                     WriteLineTL("if( getClasificacion() == Tipos."+getContenido() + ")");
+                    error = true;
                 }
-                else 
+                else if(esSNT(getContenido()))
                 {
+                    error = true;
                     WriteLineTL("if( getContenido() == \""+getContenido()+"\"" + ")");
                 }
                 WriteLineTL("{");
@@ -217,14 +218,23 @@ namespace Generador
             }
             else if(esSNT(getContenido()))
             {
+                if(error == false)
+                {
                 WriteLineTL(getContenido() + "();");
                 match(Tipos.ST);
+                }
+                else
+                {
+                    //int lin = linea+1;
+                    throw new Exception("Error en la produccion, se espera un SNT en la linea " + linea);
+                }
             }
             else if(getClasificacion() == Tipos.ST)
             {
                 WriteLineTL("match(\"" + getContenido() + "\");");
                 match(Tipos.ST);
             }
+            error = false;
             if(getClasificacion() != Tipos.FinProduccion && getContenido() != "\\)")
             {
                 simbolos();
